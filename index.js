@@ -1,5 +1,5 @@
 function parseGraphml(graphml) {
-  var jsonOut = [];
+  var jsonArrayOut = [];
   const lines = graphml.split("\n");
   const isNumeric = (obj) => {
     return !Array.isArray(obj) && obj - parseFloat(obj) + 1 >= 0;
@@ -26,10 +26,16 @@ function parseGraphml(graphml) {
       var parsed = parse(line);
       parsed = parsed.slice(0, parsed.length - 2); // remove last item
       if (parsed[0].match(/^</)) parsed[0] = parsed[0].replace("<", "");
-      jsonOut.push(toObj(parsed));
+      jsonArrayOut.push(toObj(parsed));
     }
   });
-  return jsonOut;
+  //return jsonArrayOut;
+  var jsonObjOut = { nodes: [], edges: [] };
+  for (var i = 0; i < jsonArrayOut.length; i++) {
+    const key = `${jsonArrayOut[i].type}s`;
+    jsonObjOut[key].push(jsonArrayOut[i]);
+  }
+  return jsonObjOut;
 }
 textToParse = `
 <?xml version="1.0" encoding="UTF-8"?>
