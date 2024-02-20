@@ -1,2 +1,2 @@
 # graphml-parser
-Javascript function to rconvert a graphml file to json
+Javascript function to convert a graphml file to json
