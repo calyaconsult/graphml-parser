@@ -1,0 +1,17 @@
+In the current version the parser expects that lines are separated by NL, not CRNL.
+Moreover, it expexts that all nodes and edges have lines of their own that end in ' ></node>' or ' ></edge>' respectively.
+A later version should include code that makes sure that these requirememts are met regardless of the format of the original file.
+Example:
+<?xml version="1.0" encoding="UTF-8"?><graphml><graph id="Graph" uidGraph="11" uidEdge="10041"><node positionX="566.6735503077756" positionY="259.39767723526177" id="0" mainText="JSON" upText="" size="60" ></node><node positionX="337.57953343635654" positionY="148.3893250113823" id="1" mainText="CSV" upText="" size="60" ></node><node positionX="244.36585800008245" positionY="237.08998492756936" id="2" mainText="XML" upText="" size="60" ></node><node positionX="339.00000190734863" positionY="326.9551315307617" id="3" mainText="Excel" upText="" size="60" ></node><node positionX="608.019705621121" positionY="48.593932258924255" id="4" mainText="Markdown" upText="" size="60" ></node><node positionX="833.733379590203" positionY="266.8508634729209" id="6" mainText="HTML" upText="" size="60" ></node><node positionX="432.19491805174124" positionY="101.46624808830538" id="7" mainText="PDF" upText="" size="60" ></node><edge source="7" target="1" isDirect="true" weight="1" useWeight="false" id="10039" text="" upText="" arrayStyleStart="" arrayStyleFinish="" model_width="4" model_type="0" model_curveValue="0.1" model_default="true" ></edge>
+<edge source="7" target="6" isDirect="true" weight="1" useWeight="false" id="10040" text="" upText="" arrayStyleStart="" arrayStyleFinish="" model_width="4" model_type="0" model_curveValue="0.1" model_default="true" ></edge>
+</graph></graphml>
+must be:
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml>
+<graph id="Graph" uidGraph="11" uidEdge="10041">
+<node positionX="566.6735503077756" positionY="259.39767723526177" id="0" mainText="JSON" upText="" size="60" ></node>
+<node positionX="337.57953343635654" positionY="148.3893250113823" id="1" mainText="CSV" upText="" size="60" ></node>
+<edge source="7" target="1" isDirect="true" weight="1" useWeight="false" id="10039" text="" upText="" arrayStyleStart="" arrayStyleFinish="" model_width="4" model_type="0" model_curveValue="0.1" model_default="true" ></edge>
+<edge source="7" target="6" isDirect="true" weight="1" useWeight="false" id="10040" text="" upText="" arrayStyleStart="" arrayStyleFinish="" model_width="4" model_type="0" model_curveValue="0.1" model_default="true" ></edge>
+</graph>
+</graphml>
